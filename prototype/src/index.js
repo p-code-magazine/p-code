@@ -131,7 +131,7 @@ const s = (p5) => {
         switch (t) {
           case '~':
             sine.start();
-          case '/':
+          case 'N':
             saw.start();
             break;
           case '^':

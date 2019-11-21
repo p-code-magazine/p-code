@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    html {
+      font-family: 'Monaco', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    input, button {
+      font-size: 1rem;
+      height: 40px;
+      box-sizing: border-box;
+    }
+    #start {
+      width: 15%;
+    }
+    #run {
+      width: 15%;
+    }
+    #loop {
+      width: 15%;
+    }
+    #console {
+      position: fixed;
+      top: 220px;
+      left: 15px;
+      width: 100%;
+      margin: 1rem auto 0;
+      box-sizing: border-box;
+      z-index: 100;
+    }
+  </style>
+  <title>P-Code</title>
+</head>
+<body>
+  <div id="console">
+    <button id="start">Start</button>
+    <button id="run">Run</button>
+    <input type="checkbox" id="loop">
+    <input type="range" min="0" max="1" step="0.05" id="thresh">
+    <p id="output"></p>
+  </div>
+  <script src="main.js" charset="utf-8"></script>
+</body>
+</html>

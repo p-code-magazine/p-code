@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <style>
     html {
@@ -30,22 +30,30 @@
     }
     #console {
       position: fixed;
-      top: 220px;
-      left: 15px;
+      top: 0;
+      left: 0;
       width: 100%;
       margin: 1rem auto 0;
+      padding: 1rem;
       box-sizing: border-box;
       z-index: 100;
+    }
+    #editor {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      height: 50%;
+      margin: 0;
+      padding: 0;
     }
   </style>
   <title>P-Code</title>
 </head>
 <body>
   <div id="console">
-    <button id="start">Start</button>
-    <button id="run">Run</button>
-    <input type="checkbox" id="loop">
-    <input type="range" min="0" max="1" step="0.05" id="thresh">
+    <button id="start">🔌</button><input type="file" id="file"><br>
+    <textarea name="editor" id="editor" rows="5"></textarea>
+    <button id="run">▶️</button><input type="checkbox" id="loop">
     <p id="output"></p>
   </div>
   <script src="main.js" charset="utf-8"></script>

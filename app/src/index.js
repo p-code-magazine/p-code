@@ -7,47 +7,52 @@ const s = (p5) => {
 
   let editor;
   let runButton;
-  let startButton;
+  let readButton;
   let loopToggle;
   let slider;
-  let output;
+  let log;
 
   let didLoad = false;
   let isPlaying = false;
   let doLoop = false;
 
-  let inputFile;
   let capture;
   let img;
+  let msg;
 
   let canvas;
 
   p5.setup = () => {
+    canvas = p5.createCanvas(p5.windowWidth, 160);
     p5.frameRate(30);
+
+    capture = p5.createCapture({
+      video: {
+        facingMode: {
+          exact: "environment"
+        }
+      },
+      audio: false
+    });
+    capture.hide();
 
     editor = p5.select('#editor');
     runButton = p5.select('#run');
-    output = p5.select('#output');
-    startButton = p5.select('#start');
+    readButton = p5.select('#read');
     loopToggle = p5.select('#loop');
 
     slider = p5.select('#thresh');
 
-    runButton.elt.disabled = true;
-
-    startButton.mousePressed(startButtonClicked);
+    runButton.mousePressed(runButtonClicked);
+    readButton.mousePressed(readButtonClicked);
     loopToggle.mousePressed(loopToggleChanged);
 
-    inputFile = document.getElementById('file');
-    inputFile.addEventListener('change', (file) => {
-      console.log(file);
-    });
-
-    output = document.getElementById('output');
+    msg = document.getElementById('msg');
+    log = document.getElementById('log');
   }
 
   p5.draw = () => {
-    p5.background(255);
+    p5.background(225);
 
     if(didLoad) {
       if(isPlaying) {
@@ -67,29 +72,38 @@ const s = (p5) => {
         }
       }
     }
+
+    p5.image(capture, 0, 0);
+    p5.filter(p5.THRESHOLD, slider.value());
   }
 
-  let handleFile = (file) => {
-    if(file.type === 'image') {
-      img = createImg(file.data, '');
-      console.log(img);
-    }
+  let readButtonClicked = () => {
+    let url = canvas.elt.toDataURL('image/png');
+    msg.style.visibility = "visible";
+
+    Tesseract.recognize(url, 'eng')
+      .then(({data: { text }}) => {
+        msg.style.visibility = "hidden";
+        editor.value(text);
+      });
   }
-
-  let startButtonClicked = () => {
-    runButton.elt.disabled = false;
-    runButton.mousePressed(runButtonClicked);
-
-    pcode = new PCode();
-
-    didLoad = true;
-  };
 
   let runButtonClicked = () => {
+    if(!didLoad) {
+      pcode = new PCode();
+      didLoad = true;
+    }
+
     let code = editor.value();
-    output.innerHTML = code;
 
     if(code) {
+      let text = document.createTextNode(code);
+      let p = document.createElement('p');
+      p.appendChild(text);
+      p.addEventListener('click', event => {
+        editor.value(event.target.textContent);
+      });
+      log.prepend(p);
       code = pcode.unpack(code);
 
       while(code.indexOf('<') > -1) {

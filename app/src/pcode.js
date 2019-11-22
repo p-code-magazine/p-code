@@ -12,7 +12,7 @@ export class PCode {
     this.tokens = [];
   }
 
-  unpack(code, index) {
+  unpack(code) {
     this.pointer = 0;
     let result = '';
     let start = 0;
@@ -49,7 +49,7 @@ export class PCode {
     }
 
     return result;
-  };
+  }
 
   next() {
     this.pointer++;
@@ -74,7 +74,34 @@ export class PCode {
         }
       }
     }
-  };
+  }
+
+  run(code) {
+    this.unpack(code);
+
+    let repeatCounter = 0;
+    for(let i=0; i<code.length; i++) {
+      if(code[i] == '<') {
+        repeatCounter++;
+      }
+      if(code[i] == '>') {
+        repeatCounter--;
+      }
+    }
+
+    if(repeatCounter > 0) {
+      for(let i=0; i<repeatCounter; i++) {
+        code += '>';
+      }
+    }
+
+    while(code.indexOf('<') > -1) {
+      code = this.unpack(code);
+    }
+
+    let lex = code.match(/(\D+)|[+-]?(\d*[.])?\d+/gi);
+    this.parse(lex);
+  }
 
   execute(t) {
     if(t != this.prevChar) {

@@ -114,14 +114,7 @@ const s = (p5) => {
         editor.value(event.target.textContent);
       });
       log.prepend(p);
-      code = pcode.unpack(code);
-
-      while(code.indexOf('<') > -1) {
-        code = pcode.unpack(code);
-      }
-
-      let lex = code.match(/(\D+)|[+-]?(\d*[.])?\d+/gi);
-      pcode.parse(lex);
+      pcode.run(code);
       isPlaying = true;
     }
   };

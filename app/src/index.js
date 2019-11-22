@@ -2,6 +2,16 @@ import P5 from 'p5';
 import Tesseract from 'tesseract.js';
 import { PCode } from './pcode.js';
 
+if('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then(registration => {
+      console.log('SW registered: ', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed: ', registrationError);
+    });
+  });
+}
+
 const s = (p5) => {
   let pcode;
 

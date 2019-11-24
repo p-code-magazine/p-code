@@ -25,6 +25,7 @@ const s = (p5) => {
   let didLoad = false;
   let isPlaying = false;
   let doLoop = false;
+  let selectCamera;
 
   let capture;
   let img;
@@ -39,7 +40,7 @@ const s = (p5) => {
     capture = p5.createCapture({
       video: {
         facingMode: {
-          exact: "environment"
+          ideal: "environment"
         }
       },
       audio: false
@@ -50,6 +51,11 @@ const s = (p5) => {
     runButton = p5.select('#run');
     readButton = p5.select('#read');
     loopToggle = p5.select('#loop');
+
+    selectCamera = p5.selectAll('input', '#camera');
+    selectCamera.forEach((el) => {
+      el.mousePressed(cameraChanged);
+    });
 
     slider = p5.select('#thresh');
 
@@ -85,6 +91,22 @@ const s = (p5) => {
 
     p5.image(capture, 0, 0);
     p5.filter(p5.THRESHOLD, slider.value());
+  }
+
+  let cameraChanged = () => {
+    // ?
+    const s = selectCamera.filter((el) => !el.elt.checked);
+
+    capture.remove();
+    capture = p5.createCapture({
+      video: {
+        facingMode: {
+          ideal: s[0].elt.value
+        }
+      },
+      audio: false
+    });
+    capture.hide();
   }
 
   let readButtonClicked = () => {

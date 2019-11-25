@@ -1,5 +1,6 @@
-# langspec-20190727
-Language specification draft
+# P-Code
+Language specification (in Japanese)
+[LangSpec](/langspec.md)
 
 ## Run prototype
 ```

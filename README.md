@@ -1,4 +1,7 @@
 # P-Code
+
+https://p-code-magazine.github.io/
+
 ## [Language specification (in Japanese)](/langspec.md)
 
 ## Run prototype

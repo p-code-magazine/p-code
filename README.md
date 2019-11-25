@@ -1,6 +1,6 @@
 # P-Code
 
-https://p-code-magazine.github.io/
+- https://p-code-magazine.github.io/
 
 ## [Language specification (in Japanese)](/langspec.md)
 

@@ -1,6 +1,6 @@
 # P-Code
-Language specification (in Japanese)
-[LangSpec](/langspec.md)
+
+## [Language specification (in Japanese)](/langspec.md)
 
 ## Run prototype
 ```

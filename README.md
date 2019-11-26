@@ -1,6 +1,7 @@
 # P-Code
 
-https://p-code-magazine.github.io/ ![P-QR-Code](/P-QR-Code.png)
+<img src="/P-QR-Code.png" width="150">
+https://p-code-magazine.github.io/
 
 ## [Language specification (in Japanese)](/langspec.md)
 

@@ -58,6 +58,10 @@ const s = (p5) => {
     isPlaying = true;
 
     let code = codeInput.value();
+    let unbalancedBrackets = (code.split("<").length - 1) -  (code.split(">").length - 1);
+    if(unbalancedBrackets > 0) {
+      code += '>'.repeat(unbalancedBrackets);
+    }
     code = unpack(code);
 
     while(code.indexOf('<') > -1) {

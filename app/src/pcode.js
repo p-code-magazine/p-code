@@ -109,6 +109,7 @@ export class PCode {
         switch (t) {
           case '~':
             this.sine.start(0);
+            break;
           case 'N':
             this.saw.start(0);
             break;

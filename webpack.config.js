@@ -9,8 +9,8 @@ const defaults = {
 		filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     library: 'p-code',
-		libraryTarget: "umd",
-		globalObject: "typeof self !== 'undefined' ? self : this"
+		libraryTarget: 'umd',
+		globalObject: `typeof self !== 'undefined' ? self : this`
   },
   plugins: []
 };

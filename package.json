@@ -12,7 +12,7 @@
     "LANGSPEC.md"
   ],
   "scripts": {
-    "build": "webpack --env.production",
+    "build": "webpack --env.production && npm run example:build",
     "example:serve": "cd example && webpack-dev-server --config webpack.dev.js",
     "example:build": "cd example && webpack --config webpack.prod.js"
   },

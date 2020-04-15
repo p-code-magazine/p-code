@@ -70,7 +70,7 @@ const s = (p5) => {
   p5.draw = () => {
     p5.background(225);
 
-    if(didLoad) {
+    if(didLoad && pcode.loopContext == 'external') {
       if(isPlaying) {
         if(pcode.hasNext()) {
           let node = pcode.tokens[pcode.pointer];
@@ -136,13 +136,25 @@ const s = (p5) => {
         editor.value(event.target.textContent);
       });
       log.prepend(p);
+
       pcode.run(code);
       isPlaying = true;
+
+      /* --
+      // OR.., run with internal loop, 30 fps
+      pcode.run(code, 'internal');
+      -- */
     }
   };
 
   let loopToggleChanged = () => {
-    doLoop = !loopToggle.elt.checked;
+    if (pcode) {
+      if (pcode.loopContext == 'external') {
+        doLoop = !loopToggle.elt.checked;
+      } else {
+        pcode.doLoop = !loopToggle.elt.checked;
+      }
+    }
   }
 };
 

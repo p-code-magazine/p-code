@@ -1,6 +1,6 @@
 {
   "name": "@p-code-magazine/p-code",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "Implementation of P-Code",
   "main": "dist/p-code.js",
   "unpkg": "dist/p-code.js",

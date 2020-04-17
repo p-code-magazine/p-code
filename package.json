@@ -1,6 +1,6 @@
 {
-  "name": "p-code",
-  "version": "1.0.0",
+  "name": "@p-code-magazine/p-code",
+  "version": "1.0.0-beta.0",
   "description": "Implementation of P-Code",
   "main": "dist/p-code.js",
   "unpkg": "dist/p-code.js",
@@ -10,6 +10,9 @@
     "dist",
     "README.md",
     "LANGSPEC.md"
+  ],
+  "keywords": [
+    "music", "esolang", "livecoding", "poetry", "programming"
   ],
   "scripts": {
     "build": "webpack --env.production && npm run example:build",
@@ -37,5 +40,9 @@
   },
   "dependencies": {
     "tone": "^13.8.25"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   }
 }

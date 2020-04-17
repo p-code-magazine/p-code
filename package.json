@@ -1,6 +1,6 @@
 {
   "name": "@p-code-magazine/p-code",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.2",
   "description": "Implementation of P-Code",
   "main": "dist/p-code.js",
   "unpkg": "dist/p-code.js",
@@ -40,9 +40,5 @@
   },
   "dependencies": {
     "tone": "^13.8.25"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
   }
 }

@@ -21,17 +21,11 @@ const s = (p5) => {
   let loopToggle;
   let slider;
   let log;
-
-  let didLoad = false;
-  let isPlaying = false;
-  let doLoop = false;
   let selectCamera;
-
   let capture;
-  let img;
   let msg;
-
   let canvas;
+  let didLoad = false;
 
   p5.setup = () => {
     canvas = p5.createCanvas(p5.windowWidth, 160);
@@ -70,19 +64,19 @@ const s = (p5) => {
   p5.draw = () => {
     p5.background(225);
 
-    if(didLoad && pcode.loopContext == 'external') {
-      if(isPlaying) {
+    if(didLoad && pcode.loopContext != 'internal') {
+      if(pcode.isPlaying) {
         if(pcode.hasNext()) {
           let node = pcode.tokens[pcode.pointer];
           pcode.execute(node);
           pcode.next();
         } else {
-          isPlaying = false;
+          pcode.isPlaying = false;
         }
       } else {
-        if(doLoop) {
+        if(pcode.doLoop) {
           pcode.reset();
-          isPlaying = true;
+          pcode.isPlaying = true;
         } else {
           pcode.stop();
         }
@@ -94,7 +88,6 @@ const s = (p5) => {
   }
 
   let cameraChanged = () => {
-    // ?
     const s = selectCamera.filter((el) => !el.elt.checked);
 
     capture.remove();
@@ -123,6 +116,15 @@ const s = (p5) => {
   let runButtonClicked = () => {
     if(!didLoad) {
       pcode = new PCode();
+
+      /* --
+      // - with some options
+      pcode = new PCode({
+        loopContext: 'internal',
+        enableCommentSyntax: true
+      });
+      -- */
+
       didLoad = true;
     }
 
@@ -138,22 +140,12 @@ const s = (p5) => {
       log.prepend(p);
 
       pcode.run(code);
-      isPlaying = true;
-
-      /* --
-      // OR.., run with internal loop, 30 fps
-      pcode.run(code, 'internal');
-      -- */
     }
   };
 
   let loopToggleChanged = () => {
     if (pcode) {
-      if (pcode.loopContext == 'external') {
-        doLoop = !loopToggle.elt.checked;
-      } else {
-        pcode.doLoop = !loopToggle.elt.checked;
-      }
+      pcode.doLoop = !loopToggle.elt.checked;
     }
   }
 };

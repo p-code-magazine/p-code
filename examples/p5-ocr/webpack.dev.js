@@ -9,10 +9,10 @@ module.exports = {
     contentBase: './dist',
     host: '0.0.0.0',
     hot: true,
-    https: {
-      key: fs.readFileSync('./server.key'),
-      cert: fs.readFileSync('./server.crt')
-    }
+    // https: {
+    //   key: fs.readFileSync('./server.key'),
+    //   cert: fs.readFileSync('./server.crt')
+    // }
   },
   output: {
     filename: 'main.js',

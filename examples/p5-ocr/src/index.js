@@ -1,6 +1,6 @@
 import P5 from 'p5';
 import Tesseract from 'tesseract.js';
-import { PCode } from '../../lib/index.js';
+import { PCode } from '../../../lib/index.js';
 
 if('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

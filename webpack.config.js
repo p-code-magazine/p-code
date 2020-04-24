@@ -8,7 +8,7 @@ const defaults = {
   output: {
 		filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'p-code',
+    library: 'pcode',
 		libraryTarget: 'umd',
 		globalObject: `typeof self !== 'undefined' ? self : this`
   },

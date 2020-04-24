@@ -16,8 +16,8 @@
   ],
   "scripts": {
     "build": "webpack --env.production && npm run example:build",
-    "example:serve": "cd example && webpack-dev-server --config webpack.dev.js",
-    "example:build": "cd example && webpack --config webpack.prod.js"
+    "example:serve": "cd examples/p5-ocr && webpack-dev-server --config webpack.dev.js",
+    "example:build": "cd examples/p5-ocr && webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",

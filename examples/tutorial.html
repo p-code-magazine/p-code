@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+        <script src="https://unpkg.com/@p-code-magazine/p-code" defer></script>
+        <style>
+         html, body {
+             font-family: 'Monaco', sans-serif;
+             margin: 0;
+             padding: 0;
+             font-size: 16px;
+         }
+         h5 {
+             margin-block-start: 1em;
+             margin-block-end: 1em;
+         }
+         h6 {
+             margin-block-start: .33em;
+             margin-block-end: .33em;
+         }
+         button {
+             margin-block-start: 0.5em;
+             margin-block-end: 0.5em;
+         }
+
+         section {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             margin-block-end: 2rem;
+         }
+
+         textarea {
+             display: block;
+             min-width: 20rem;
+             min-height: 3rem;
+         }
+        </style>
+        <title>P-Code tutorial</title>
+    </head>
+    <body>
+        <section>
+            <h5>Basics</h5>
+            <div x-data="{ sample: '441~' }">
+                <h5>441Hz sine wave</h5>
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '11025[' }">
+                <h5>11025Hz square wave</h5>
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '123.456^' }">
+                <h5>Can use decimal</h5>
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '882NNNNNNNNNNNNNNN' }">
+                <h5>882Hz saw wave, 0.5sec</h5>
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: 'Hello, world!' }">
+                <h5>White noise (P-Code is error-free!)</h5>
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '=========' }">
+                <h5>Silence</h5>
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+        </section>
+
+        <section>
+            <h5>Repeating</h5>
+            <div x-data="{ sample: '882<N>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '882<<<N>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '882<<<N' }">
+                <h6>Allowed short-hand style</h6>
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '<<<<#=>>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+        </section>
+
+        <section>
+            <h5>More complex examples</h5>
+
+            <div x-data="{ sample: '44100/7/5/2/3*5+1000-500[[[[[' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '<<<441~~==+441~~==>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '882<<<-441~~==+441~~==>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '<<<441~~==*2~~==>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '100<<<<<<<<+10~>>>>>>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '10000<<<<<<<<-10~>>>>>>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '20<<<<<<*1.1~~~~>>>>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '20000<<<<<</1.1~~~~>>>>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '<<<441~~==*2~~==>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '<200N==<<<=50^==><<=800~>2000[>>=*==>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '<<<100+100=200~>>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+
+            <div x-data="{ sample: '<<[[==[[==[[==[[[[[[==[[[[[[==[[[[[[==[[==[[==[[========>>' }">
+                <textarea x-model="sample"></textarea>
+                <button @click="run(sample)">RUN</button>
+            </div>
+        </section>
+
+        <script>
+         let _pcode;
+
+         const run = (code) => {
+             if (!_pcode) {
+                 _pcode = new pcode.PCode({ loopContext: 'internal' });
+             }
+             _pcode.run(code);
+         }
+        </script>
+    </body>
+</html>

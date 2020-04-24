@@ -7,8 +7,8 @@ on:
   push:
     tags:
       - '**'
-      - '**-beta'
-      - '**-alpha'
+      - '**-beta*'
+      - '**-alpha*'
 
 jobs:
   publish-gpr:

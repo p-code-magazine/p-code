@@ -20,7 +20,7 @@ npm i @p-code-magazine/p-code
 ```
 
 ```javascript
-import { PCode } from 'p-code';
+import { PCode } from '@p-code-magazine/p-code';
 
 const pcode = new PCode();
 // No options supplied, "loopContext = 'external'" is default.
@@ -51,7 +51,7 @@ if (pcode.isPlaying) {
 or
 
 ```javascript
-import { PCode } from 'p-code';
+import { PCode } from '@p-code-magazine/p-code';
 
 const pcode = new PCode({
     // If loopContext = 'internal', p-code run as internal-loop (standalone) mode.
@@ -64,15 +64,6 @@ const pcode = new PCode({
     */
 });
 ```
-<<<<<<< HEAD
-npm install
-npm run serve
-
-# And then, access http://0.0.0.0:8080/
-```
-
-## Build prototype
-=======
 
 ### Via CDN (unpkg):
 
@@ -92,20 +83,13 @@ A shrot tutorial is [here](examples/tutorial.html), or run on [CodePen](https://
 
 ### Build bundle
 
->>>>>>> master
 ```
 npm i
 npm run build
 ```
-<<<<<<< HEAD
----
-
-## Run app
-=======
 
 ### Run example application
 
->>>>>>> master
 Create a Self-Signed SSL Certificate. [How to get https working on your local development environment in 5 minuts](https://www.freecodecamp.org/news/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec/).
 
 ```
@@ -117,10 +101,5 @@ Access https://[LOCAL-SERVER-IP-ADDRESS]:8080/ on your mobile.
 ### Build example application
 
 ```
-<<<<<<< HEAD
-npm run build
-```
-=======
 npm run example:build
 ```
->>>>>>> master

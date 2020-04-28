@@ -73,7 +73,7 @@ const pcode = new PCode({
 <script defer>
     const _pcode = new pcode.PCode();
     ...
-</script>>
+</script>
 ```
 
 A shrot tutorial is [here](examples/tutorial.html), or run on [CodePen](https://codepen.io/inafact/pen/vYNZgMx)

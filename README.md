@@ -8,8 +8,8 @@ P-Code is a language for live coding that evolved from the idea of describing rh
 
 ## Language specification
 
-- [English](/langspec.md)
-- [日本語](/langspec-ja.md)
+- [English](/LANGSPEC.md)
+- [日本語](/LANGSPEC_JA.md)
 
 ## Install & Usage
 

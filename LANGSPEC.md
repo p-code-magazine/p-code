@@ -1,114 +1,154 @@
-## P-Codeの言語仕様
+## Language specification
 
-P-Codeはリズムマシンのパターンをテキスト形式で記述するアイデアから発展し、プログラミングの要素を取り入れたライブ・コーディング用の言語である。コードは左から右に解釈され、数値とそれ以外の記号に分けられ、実行される。数値はすべて周波数であり、解釈できない記号はすべてホワイトノイズとして扱われる。
+P-Code is a language for live coding that evolved from the idea of describing rhythm machine patterns in text form and incorporated elements of programming. The code is interpreted from left to right, divided into numbers and other symbols, and executed. All numbers are processed as frequencies, and all symbols that cannot be interpreted are treated as white noise.
 
-| 記号  | 意味 |
-| ------------- | ------------- |
-| ~ | サイン波  |
-| ^ | 三角波|
-| N | ノコギリ波  |
-| [ | 矩形波 |
-| = | ミュート（休符） |
-| \<CODE\> | CODE部分を繰り返す |
-| NUMBER | 周波数を設定する |
-| +NUMBER | 設定された周波数にNUMBERを足す |
-| -NUMBER | 設定された周波数からNUMBERを引く |
-| *NUMBER | 設定された周波数にNUMBERを掛ける |
-| /NUMBER | 設定された周波数をNUMBERで割る |
+| Symbol | Meaning |
+| - | - |
+| ~ | Sign Wave  |
+| ^ | Trianglar Wave |
+| N | Sawtooth Wave |
+| [ | Square Wave |
+| = | Mute (Rest) |
+| \<CODE\> | Iterate `CODE` |
+| NUMBER | Set frequency (Hz) |
+| +NUMBER | Adding `NUMBER` to set frequency |
+| -NUMBER | Substructing `NUMBER` to set frequency |
+| *NUMBER | Multiply `NUMBER` to set frequency |
+| /NUMBER | Devide `NUMBER` to set frequency |
 
-## チュートリアル
+## Tutorial
 
-### 数値と記号
+### Numbers and Symbols
 
-数値は周波数を意味する。記号ひとつが時間の単位(1/30秒)になる。
+The number means the frequency. One symbol becomes a unit of time (1/30 sec).
 
-441Hzのサイン波
-`441~`
+Sine wave at 441Hz.
+```
+441~
+```
 
-11025Hzの矩形波
-`11025[`
+11025Hz square wave
+```
+11025[
+```
 
-数値には小数も使うことができる。
+Decimals can also be used for numbers.
 
-123.456Hzの三角波
-`123.456^`
+Triangular wave at 123.456Hz.
+```
+123.456^
+```
 
-同じ音を鳴らし続けるには、同じ記号を連続させる。
+To keep playing the same sound, make the same symbols in succession.
 
-882Hzのノコギリ波の持続(0.5秒)
-`882NNNNNNNNNNNNNNN`
+Sawtooth wave duration of 882Hz (0.5 seconds).
+```
+882NNNNNNNNNNNNNNNNNNN
+```
 
-### 繰り返し
-同じことが繰り返しでも書ける。< > で挟んだ部分を繰り返す。 
+### Repeat
+The same thing can be written over and over again. Repeat the part sandwiched by `< >`.
 
-< >のネスト(入れ子)で2^(ネストの数)の繰り返し
-`882N`
-`882<N>`
-`882<<N>>`
-`882<<<N>>>`
-`882<<<<N>>>>`
+2^ (number of nests) repeated in the nest of `< >`.
+```
+882N
+882<N>
+882<<N>>
+882<<<N>>>
+882<<<<N>>>>
+```
 
-このように、音の長さが 2 倍になっていく。また、カッコが足りない場合は最後に補完される。
+In this way, the length of the sound doubles. Also, if parentheses are missing, they are completed at the end.
+```
+882<<<<N>
+```
 
-`882<<<<N>`
+All but unreserved characters (symbols) are interpreted as white noise.
 
-予約されていない文字(記号)以外はすべてホワイトノイズに解釈される。
+Intermittent noise (repetition of noise and mute (rest))
+```
+<<<<#=>>>>
+```
 
-ノイズの断続(ノイズとミュート(休符)の繰り返し
-`<<<<#=>>>>`
+### Arithmetic
 
-### 四則演算
+The frequency can be used to calculate the addition and division.
 
-周波数は加減乗除の演算ができる。
+1550Hz square wave
+```
+44100/7/5/2/3*5+1000-500[[[[
+```
 
-1550Hzの矩形波
-`44100/7/5/2/3*5+1000-500[[[[[`
+A number without an operation symbol is considered to be an absolute value.
 
-演算記号を伴わない数値は絶対値とみなされる。
+Intermittent repetition of 441Hz and 882Hz sine waves
+```
+<<<<441~~==+441~~==>>>
+```
 
-441Hzと882Hzのサイン波の断続の繰り返し 
-`<<<441~~==+441~~==>>>`
+The above code can also be written as follows.
 
-上のコードは、以下のようにも書くことができる。
+```
+882<<<-441~~==+441~~==>>>
+```
+```
+<<<<441~~==*2~~==>>>
+```
 
-`882<<<-441~~==+441~~==>>>`
-`<<<441~~==*2~~==>>>`
+I can use repetition to create different rhythms.
 
-繰り返しを使っていろいろなリズムをつくることができる。
+```
+<<<<441~~==*2~~==>>>
+```
 
-`<<<441~~==*2~~==>>>`
+The frequency can also be continuously changed.
 
-周波数を連続的に変化させることもできる。
+Sine wave sweep (linear)
+```
+100<<<<<<<<<+10~>>>>>>
+```
 
-サイン波のスイープ(線形)
-`100<<<<<<<<+10~>>>>>>>>`
+Inverse sweep of sine wave (linear)
+```
+10000<<<<<<<<<<10~>>>>>>
+```
 
-サイン波の逆スイープ(線形)
-`10000<<<<<<<<-10~>>>>>>>>`
+Sweep of sine wave (logarithmic)
+```
+20<<<<<<<*1.1~~>>>>
+```
 
-サイン波のスイープ(対数)
-`20<<<<<<*1.1~~~~>>>>>>`
+Inverse sweep of the sine wave (logarithmic)
+```
+20000<<<<<<</1.1.1~~>>>
+```
 
-サイン波の逆スイープ(対数)
-`20000<<<<<</1.1~~~~>>>>>>`
+### Sample Code
 
-### サンプルコード
+Rhythmic patterns with a combination of repetition and mute
+```
+<200N==<<<=50^==><<=800~>2000[>>=*==>>>
+```
 
-繰り返しとミュートの組み合わせによるリズムパターン
-`<200N==<<<=50^==><<=800~>2000[>>=*==>>`
+I'm going to code what looks like a formula.
+```
+<<<<100+100=200~>>>
+```
 
-数式のように見えるコードもかける
-`<<<100+100=200~>>>`
+No matter what code you write, it's not an error.
+```
+Hello, world!
+```
 
-どんなコードを書いてもエラーにはならない
-`Hello, world!`
+A code of silence.
+```
+@<<<<<<<<<<=>>>>>>@
+```
 
-沈黙のコード
-`@<<<<<<<<<<=>>>>>>>>>>@`
-
-遭難信号 (SOS) も打てる
-`<<[[==[[==[[==[[[[[[==[[[[[[==[[[[[[==[[==[[==[[========>>`
-
+I can also shoot a distress signal (SOS).
+```
+<<[[==[[==[[==[[[[[[==[[[[[[==[[[[[[==[[==[[==[[========>>
+```
 ---
 
-P-Codeはどんなコードを書いてもエラーにはならない。恐れずに（手書きで）コードを書き、僕らの想像を超えるすごい音を聴かせて欲しい。
+P-Code is not an error, no matter what code you write. Don't be afraid to write the chords (by hand) and let us hear some amazing sounds that are beyond our imagination.

@@ -5,7 +5,7 @@
 ## [Language specification (in Japanese)](/LANGSPEC.md)
 
 
-## Install & Useage
+## Install & Usage
 
 ### Via NPM:
 
@@ -20,6 +20,7 @@ import { PCode } from 'p-code';
 const pcode = new PCode();
 // No options supplied, "loopContext = 'external'" is default.
 // You need to handle run-execute process by self.
+//
 // (e.g. into setInterval or requestAnimationFrame callback)
 ...
 
@@ -48,9 +49,15 @@ or
 import { PCode } from 'p-code';
 
 const pcode = new PCode({
+    // If loopContext = 'internal', p-code run as internal-loop (standalone) mode.
     loopContext: 'internal'
+    // Other options, defaults are as follows:
+    /*
+    enableCommentSyntax: false,
+    lineComment: '#',
+    blockComment: /""".*?"""/g
+    */
 });
-// If loopContext = 'internal', p-code run as internal-loop (standalone) mode.
 ```
 
 

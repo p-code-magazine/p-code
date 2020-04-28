@@ -1,5 +1,7 @@
 ## Language specification
 
+P-Code is a language for live coding that evolved from the idea of describing rhythm machine patterns in text form and incorporated elements of programming. The code is interpreted from left to right, divided into numbers and other symbols, and executed. All numbers are processed as frequencies, and all symbols that cannot be interpreted are treated as white noise.
+
 | Symbol | Meaning |
 | - | - |
 | ~ | Sign Wave  |

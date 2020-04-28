@@ -1,0 +1,44 @@
+{
+  "name": "@p-code-magazine/p-code",
+  "version": "1.0.0-beta.5",
+  "description": "Implementation of P-Code",
+  "main": "dist/p-code.js",
+  "unpkg": "dist/p-code.js",
+  "module": "lib/index.js",
+  "files": [
+    "lib",
+    "dist",
+    "README.md",
+    "LANGSPEC.md"
+  ],
+  "keywords": [
+    "music", "esolang", "livecoding", "poetry", "programming"
+  ],
+  "scripts": {
+    "build": "webpack --env.production && npm run example:build",
+    "example:serve": "cd examples/p5-ocr && webpack-dev-server --config webpack.dev.js",
+    "example:build": "cd examples/p5-ocr && webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p-code-magazine/p-code.git"
+  },
+  "author": "p-code-magazine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p-code-magazine/p-code/issues"
+  },
+  "homepage": "https://github.com/p-code-magazine/p-code#readme",
+  "devDependencies": {
+    "https": "^1.0.0",
+    "p5": "^1.0.0",
+    "tesseract.js": "^2.1.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "workbox-webpack-plugin": "^4.3.1"
+  },
+  "dependencies": {
+    "tone": "^13.8.25"
+  }
+}

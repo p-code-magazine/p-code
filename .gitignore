@@ -1,3 +1,5 @@
 node_modules
 *.crt
 *.key
+
+example/dist/*.js

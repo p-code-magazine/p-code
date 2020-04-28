@@ -13,7 +13,6 @@
 npm i @p-code-magazine/p-code
 ```
 
-
 ```javascript
 import { PCode } from 'p-code';
 
@@ -60,7 +59,6 @@ const pcode = new PCode({
 });
 ```
 
-
 ### Via CDN (unpkg):
 
 ```html
@@ -72,8 +70,8 @@ const pcode = new PCode({
 </script>>
 ```
 
+A shrot tutorial is [here](examples/tutorial.html), or run on [CodePen](https://codepen.io/inafact/pen/vYNZgMx)
 
-..and, simple tutorial is [here](examples/tutorial.html)
 
 ## Development
 

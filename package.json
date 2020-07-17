@@ -1,5 +1,5 @@
 {
-  "name": "@p-code-magazine/p-code",
+  "name": "@h4us/p-code",
   "version": "1.0.0",
   "description": "Implementation of P-Code",
   "main": "dist/p-code.js",
@@ -12,7 +12,11 @@
     "LANGSPEC.md"
   ],
   "keywords": [
-    "music", "esolang", "livecoding", "poetry", "programming"
+    "music",
+    "esolang",
+    "livecoding",
+    "poetry",
+    "programming"
   ],
   "scripts": {
     "build": "webpack --env.production && npm run example:build",

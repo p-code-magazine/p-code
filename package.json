@@ -12,7 +12,11 @@
     "LANGSPEC.md"
   ],
   "keywords": [
-    "music", "esolang", "livecoding", "poetry", "programming"
+    "music",
+    "esolang",
+    "livecoding",
+    "poetry",
+    "programming"
   ],
   "scripts": {
     "build": "webpack --env.production && npm run example:build",
@@ -35,7 +39,7 @@
     "tesseract.js": "^2.1.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0",
+    "webpack-dev-server": "^3.11.2",
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {

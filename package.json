@@ -1,6 +1,6 @@
 {
-  "name": "@h4us/p-code",
-  "version": "1.0.0",
+  "name": "@p-code-magazine/p-code",
+  "version": "1.1.0",
   "description": "Implementation of P-Code",
   "main": "dist/p-code.js",
   "unpkg": "dist/p-code.js",

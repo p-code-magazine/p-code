@@ -19,7 +19,7 @@
     "programming"
   ],
   "scripts": {
-    "build": "webpack --env.production && npm run example:build",
+    "build": "webpack --env production && npm run example:build",
     "example:serve": "cd examples/p5-ocr && webpack-dev-server --config webpack.dev.js",
     "example:build": "cd examples/p5-ocr && webpack --config webpack.prod.js"
   },
@@ -37,12 +37,15 @@
     "https": "^1.0.0",
     "p5": "^1.0.0",
     "tesseract.js": "^2.1.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "workbox-webpack-plugin": "^4.3.1"
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2",
+    "webpack-dev-server": "^5.2.3",
+    "workbox-webpack-plugin": "^7.0.0"
   },
   "dependencies": {
     "tone": "^14.7.30"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.0.5"
   }
 }

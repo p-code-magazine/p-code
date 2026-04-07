@@ -1,0 +1,12 @@
+/**
+ * Tone.js
+ * @author Yotam Mann
+ * @license http://opensource.org/licenses/MIT MIT License
+ * @copyright 2014-2019 Yotam Mann
+ */
+
+//! NOTE: Clamp frequency,
+
+//! TODO;
+
+//! because outside of [Tone.Signal<"frequency">.minValue to Tone.Signal<"frequency">.maxValue] range crash Tone.js

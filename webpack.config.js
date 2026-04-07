@@ -8,8 +8,10 @@ const defaults = {
   output: {
 		filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'pcode',
-		libraryTarget: 'umd',
+    library: {
+			name: 'pcode',
+			type: 'umd',
+		},
 		globalObject: `typeof self !== 'undefined' ? self : this`
   },
   plugins: []
@@ -21,5 +23,5 @@ const production = Object.assign({}, defaults, {
 });
 
 module.exports = (env) => {
-  return env.production ? production : defaults;
+  return env && env.production ? production : defaults;
 };

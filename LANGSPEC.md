@@ -120,7 +120,7 @@ Sweep of sine wave (logarithmic)
 
 Inverse sweep of the sine wave (logarithmic)
 ```
-20000<<<<<<</1.1.1~~>>>
+20000<<<<<<</1.1~~>>>
 ```
 
 ### Sample Code
